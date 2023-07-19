@@ -6,7 +6,13 @@
 
     <groupId>com.an</groupId>
     <artifactId>HDFS-Dome</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>HDFS-01-WordCount</module>
+        <module>Dome-File</module>
+        <module>common</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -84,4 +90,41 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <!-- 生成的 jar 包名称中是否追加 appendAssemblyId -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <!-- 将项目依赖的 jar 包打包到当前 jar 包 -->
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <!-- 打成可执行的 jar 包的主方法入口类 -->
+                            <mainClass>com.an.hdfs.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <!-- 插件目标列表 -->
+                <executions>
+                    <!-- 将插件目标与生命周期阶段绑定 -->
+                    <execution>
+                        <!-- 插件目标 -->
+                        <goals>
+                            <!-- 只运行一次 -->
+                            <goal>single</goal>
+                        </goals>
+                        <!-- 生命周期阶段 -->
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
