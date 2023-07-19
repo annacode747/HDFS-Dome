@@ -17,5 +17,44 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
+    <!-- 设 置 执 行  MapReduce 任 务 的 运 行 时 框 架 为  YARN -->
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <!-- 设 置  MapReduce JobHistory 服 务 器 的 地 址  -->
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>node01:10020</value>
+    </property>
+    <!-- 设 置  MapReduce JobHistory 服 务 器 的  Web 地 址  -->
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>node01:19888</value>
+    </property>
+    <!-- 设 置 已 经 运 行 完 的  Hadoop 作 业 记 录 的 存 放 路 径 （ HDFS 文 件 系 统 中 的 目 录 ） ， 默 认 是 ${yarn.app.mapreduce.am.staging-dir}/history/done -->
+    <property>
+        <name>mapreduce.jobhistory.done-dir</name>
+        <value>/history/done</value>
+    </property>
+    <!-- 设 置 正 在 运 行 中 的  Hadoop 作 业 记 录 的 存 放 路 径 （ HDFS 文 件 系 统 中 的 目 录 ） ， 默 认 是 ${yarn.app.mapreduce.am.staging-dir}/history/done_intermediate -->
+    <property>
+        <name>mapreduce.jobhistory.intermediate-done-dir</name>
+        <value>/history/done_intermediate</value>
+    </property>
+    <!-- 设 置 需 要 加 载 的  jar 包 和 环 境 配 置  -->
+    <property>
+        <name>mapreduce.application.classpath</name>
+        <value>
+            /opt/an/hadoop-3.1.2/etc/hadoop,
+            /opt/an/hadoop-3.1.2/share/hadoop/common/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/common/lib/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/hdfs/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/hdfs/lib/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/mapreduce/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/mapreduce/lib/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/yarn/*,
+            /opt/an/hadoop-3.1.2/share/hadoop/yarn/lib/*
+        </value>
+    </property>
 </configuration>
