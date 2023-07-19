@@ -17,9 +17,11 @@ public class Main {
     }
     @Test
     public void test() throws IOException {
+        // 上传
         Path srcPath = new Path("C:\\Users\\an\\Documents\\大数据\\01Linux\\003_software\\jdk-8u231-linux-x64.tar.gz");
         Path destPath = new Path("/test");
         fileSystem.copyFromLocalFile(srcPath,destPath);
+        // 下载
 //        Path srcPath = new Path("C:\\extend\\V");
 //        Path destPath = new Path("/test/jdk-8u231-linux-x64.tar.gz");
 //        fileSystem.copyToLocalFile(destPath,srcPath);
